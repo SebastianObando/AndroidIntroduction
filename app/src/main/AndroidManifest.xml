@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".activity.LayoutLinear"
+            android:exported="true"
+            />
+        <activity
             android:name=".activity.Pantalla3Activity"
             android:exported="true" />
         <activity

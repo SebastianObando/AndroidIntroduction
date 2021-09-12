@@ -13,6 +13,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.edu.eam.myapplication.R
 import com.edu.eam.myapplication.model.Estudiante
+import com.edu.eam.myapplication.utils.Constantes
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -60,6 +61,12 @@ class MainActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
     }
 
+    fun irPantalla4(v: View) {
+        Log.v(TAG, "Pasar a la pantalla 4")
+        val intent = Intent(this, LayoutLinear::class.java)
+        startActivity(intent)
+    }
+
     fun cambiarTexto(v: View) {
         valorTexto = "Nuevo Texto"
         texto.text = valorTexto
@@ -82,9 +89,9 @@ class MainActivity : AppCompatActivity() {
     private fun onActivityResult(resultCode: Int, result:ActivityResult) {
         val data = result.data?.extras
         if (resultCode == Activity.RESULT_OK) {
-            Toast.makeText(this, "Mensaje recibido: ${data?.getString("RESPUESTA")}", Toast.LENGTH_LONG).show()
+            Constantes.mostrarMensaje(this, "Mensaje recibido: ${data?.getString("RESPUESTA")}")
         } else if (resultCode == Activity.RESULT_CANCELED) {
-
+            Constantes.mostrarMensaje(this, "Mensaje 2: ${data?.getString("RESPUESTA")}")
         }
     }
 }

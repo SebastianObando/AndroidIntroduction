@@ -36,12 +36,23 @@
         />
 
     <Button
+        android:id="@+id/btnCambiarTexto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cambiar Text View"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/btnPantalla3"
         android:onClick="cambiarTexto"
+        />
+
+    <Button
+        android:id="@+id/btnPantalla5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Linear Layout"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnCambiarTexto"
+        android:onClick="irPantalla4"
         />
 
 </RelativeLayout>
