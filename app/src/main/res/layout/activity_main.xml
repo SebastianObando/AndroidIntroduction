@@ -55,4 +55,14 @@
         android:onClick="irPantalla4"
         />
 
+    <Button
+        android:id="@+id/btnCoordinator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coordinator Layout"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnPantalla5"
+        android:onClick="irPantallaCoordinator"
+        />
+
 </RelativeLayout>

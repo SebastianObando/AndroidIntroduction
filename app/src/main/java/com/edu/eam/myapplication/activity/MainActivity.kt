@@ -67,6 +67,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun irPantallaCoordinator(v: View) {
+        val intent = Intent(this, CoordinatorLayoutActivity::class.java)
+        startActivity(intent)
+    }
+
     fun cambiarTexto(v: View) {
         valorTexto = "Nuevo Texto"
         texto.text = valorTexto
