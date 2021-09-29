@@ -10,9 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".activity.ModificarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CrearActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DetalleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ListaActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.LayoutLinear"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".activity.Pantalla3Activity"
             android:exported="true" />

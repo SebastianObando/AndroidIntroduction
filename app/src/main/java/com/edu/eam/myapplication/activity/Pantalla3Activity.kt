@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewParent
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import com.edu.eam.myapplication.R
 import com.edu.eam.myapplication.databinding.ActivityPantalla3Binding
 import com.edu.eam.myapplication.model.Estudiante
@@ -14,6 +17,7 @@ class Pantalla3Activity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var binding: ActivityPantalla3Binding
     var estado: Boolean = true
+    var pokemonSeleccionado:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,31 @@ class Pantalla3Activity : AppCompatActivity(), View.OnClickListener {
         binding.imagen.setOnClickListener (this)
 
         binding.leerDatos.setOnClickListener(this)
+
+        binding.txtNombre.isErrorEnabled = true
+        binding.txtEdad.isErrorEnabled = true
+
+        val lista = arrayOf("Pikachu", "Charmander", "Snorlax", "Gengar", "Mew", "Chikorita")
+
+        //val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, lista)
+
+        val adapter = ArrayAdapter.createFromResource(this, R.array.pokemon, android.R.layout.simple_spinner_item)
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        binding.spinner.adapter = adapter
+
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                pokemonSeleccionado = parent?.getItemAtPosition(position).toString()
+                Constantes.mostrarMensaje(baseContext, "La opcion seleccionada es: ${parent?.getItemAtPosition(position)}")
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
     }
 
     override fun onBackPressed() {
@@ -53,8 +82,12 @@ class Pantalla3Activity : AppCompatActivity(), View.OnClickListener {
             binding.leerDatos.id -> {
                 val nombre = binding.nombre.text
                 val edad = binding.edad.text
-
-                Constantes.mostrarMensaje(this, "${nombre} y ${edad}")
+                if( nombre.length > 10) {
+                    binding.txtNombre.error = "Máximo 10 caracteres"
+                } else {
+                    binding.txtNombre.error = null
+                }
+                Constantes.mostrarMensaje(this, "${nombre} y ${edad} y ${pokemonSeleccionado}")
             }
         }
     }

@@ -10,28 +10,56 @@
     <ImageView
         android:id="@+id/imagen"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:contentDescription="Imagen de Android "
+        android:layout_gravity="center"
         android:src="@drawable/img1"/>
 
-    <EditText
-        android:id="@+id/nombre"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_nombre"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:hint="Escriba aquí su nombre"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_edad"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        >
+        <EditText
+            android:id="@+id/edad"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:inputType="number"
+            android:hint="Escriba su edad"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:hint="Escriba aquí su nombre"
-        />
-    <EditText
-        android:id="@+id/edad"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:inputType="number"
-        android:hint="Escriba su edad"
-        />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/spinner"></Spinner>
+
 
     <Button
         android:id="@+id/leer_datos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Leer datos"/>
+        android:text="Leer datos"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

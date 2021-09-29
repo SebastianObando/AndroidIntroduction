@@ -5,10 +5,11 @@ import android.os.Parcelable
 import java.util.*
 import kotlin.collections.ArrayList
 
-class Estudiante (var fechaNacimiento: Date, var nombre: String?, var notas: FloatArray?): Parcelable{
+class Estudiante(var codigo: String?, var fechaNacimiento: Date, var nombre: String?, var notas: FloatArray?): Parcelable{
     var amigos: ArrayList<Estudiante> = ArrayList()
 
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readSerializable()  as Date,
         parcel.readString(),
         parcel.createFloatArray()
@@ -19,6 +20,7 @@ class Estudiante (var fechaNacimiento: Date, var nombre: String?, var notas: Flo
 
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel?.writeString(codigo)
         parcel.writeSerializable(fechaNacimiento)
         parcel.writeString(nombre)
         parcel.writeFloatArray(notas)
@@ -30,8 +32,24 @@ class Estudiante (var fechaNacimiento: Date, var nombre: String?, var notas: Flo
     }
 
     override fun toString(): String {
-        return "Estudiante(fechaNacimiento=$fechaNacimiento, nombre=$nombre, notas=${notas?.contentToString()}, amigos=$amigos)"
+        return "Estudiante(codigo=$codigo, fechaNacimiento=$fechaNacimiento, nombre=$nombre, notas=${notas?.contentToString()}, amigos=$amigos)"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Estudiante
+
+        if (codigo != other.codigo) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return codigo?.hashCode() ?: 0
+    }
+
 
     companion object CREATOR : Parcelable.Creator<Estudiante> {
         override fun createFromParcel(parcel: Parcel): Estudiante {
@@ -42,4 +60,7 @@ class Estudiante (var fechaNacimiento: Date, var nombre: String?, var notas: Flo
             return arrayOfNulls(size)
         }
     }
+
+
+
 }

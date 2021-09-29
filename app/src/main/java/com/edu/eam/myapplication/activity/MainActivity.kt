@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -51,9 +50,9 @@ class MainActivity : AppCompatActivity() {
     fun irPantalla3(v: View) {
         Log.v(TAG, "Pasar a la pantalla 3")
         val intent = Intent(this, Pantalla3Activity::class.java)
-        var estudiante1 = Estudiante(Date(), "Cuadrado", floatArrayOf(3.6F, 4.6F, 2.4F));
+        var estudiante1 = Estudiante("12", Date(), "Cuadrado", floatArrayOf(3.6F, 4.6F, 2.4F));
 
-        val estudiante2 = Estudiante(Date(), "Juanita", floatArrayOf(3.6F, 4.6F, 3.4F));
+        val estudiante2 = Estudiante("14", Date(), "Juanita", floatArrayOf(3.6F, 4.6F, 3.4F));
         estudiante2.amigos.add(estudiante1)
 
         intent.putExtra("estudiante", estudiante2)
@@ -65,6 +64,10 @@ class MainActivity : AppCompatActivity() {
         Log.v(TAG, "Pasar a la pantalla 4")
         val intent = Intent(this, LayoutLinear::class.java)
         startActivity(intent)
+    }
+
+    fun irListaEstudiantes(v: View) {
+        startActivity( Intent(this, ListaActivity::class.java) )
     }
 
     fun irPantallaCoordinator(v: View) {

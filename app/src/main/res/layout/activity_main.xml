@@ -56,13 +56,15 @@
         />
 
     <Button
-        android:id="@+id/btnCoordinator"
+        android:id="@+id/btnLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coordinator Layout"
+        android:text="Lista Estudiantes"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btnPantalla5"
-        android:onClick="irPantallaCoordinator"
+        android:onClick="irListaEstudiantes"
         />
+
+
 
 </RelativeLayout>
